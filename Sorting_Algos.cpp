@@ -60,3 +60,27 @@ void insertionSort(int arr[], int n){
     }
 }
 
+//selection sort
+
+void swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+void selectionsort(int array[], int n)
+{
+	int i, j, min;
+	for (i = 0; i < n - 1; i++)
+	{
+		min = i;
+		for (j = i + 1; j < n; j++)
+		{
+			if (array[j] < array[min])
+				min = j;
+		}
+		swap(array[min], array[i]);
+		
+	}
+}
+
