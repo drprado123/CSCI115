@@ -1,3 +1,5 @@
+#ifndef __minheap_
+#define __minheap_
 #include <iostream>
 using namespace std;
 
@@ -137,6 +139,56 @@ void quickrand(int* arr, int low, int high) //quicksort using a random element
     quickrand(arr,q+1,high);
 }
 
+
+//functions for heapsort -------------------------------
+class minheap
+{
+    public:
+        minheap();
+        minheap(int*,int);
+        int* heapsort();
+        int* heapsort(int*);
+        int* buildheap(int*,int);
+
+    private:
+        int* vals;
+        int size;
+        void heapify(int*, int);
+};
+
+minheap :: minheap(int* input, int n)
+{
+    vals = input;
+    size = n;
+    heapify(input, 0);
+}
+
+void minheap :: heapify(int* vals, int loc)
+{
+    if (loc > size) return;
+    int left,right;
+    int small;
+    if (loc == 0)
+    {
+        left = 1;
+        right = 2;
+    }
+    else 
+    {
+        left = loc * 2 - 1;
+        right = loc * 2;
+    }
+    if (left < size && left < vals[loc]) small = left;
+    else small = loc;
+    if (right < size && right < small) small = right;
+    if (small != loc) swap(vals,small,loc); heapify(vals,small);
+}
+
+int* minheap :: buildheap(int* vals, int n)
+{
+    for (int i = n/2; i >= 0; i--) heapify(vals,i);
+}
+
 //functions to use for testing values----------------------------
 int* generaterandarray(int size, int maxval) //generates an array of size size with the biggest possible value being maxval
 {
@@ -156,7 +208,7 @@ int* generateascending(int size) //generates an ascending array of size size
     }
     return arr;
 }
-int* generatedescenging(int size) //generates descending array of size size
+int* generatedescending(int size) //generates descending array of size size
 {
     int* arr = new int[size];
     for (int i = size; i >= 0; i--)
@@ -173,3 +225,5 @@ void print(int* arr, int n) //prints n elements of array
     }
     cout << endl;
 }
+
+#endif
