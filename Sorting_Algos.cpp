@@ -84,3 +84,82 @@ void selectionsort(int array[], int n)
 	}
 }
 
+
+//functions for quicksort----------------------------------------------------------
+void swap (int* arr, int a, int b)//swaps two values within an array
+{
+    int temp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = temp;
+}
+int partition(int* arr, int low, int high) //partitions using first element
+{
+    int pivot = arr[low];
+    int i = high +1;
+    for (int j = high; j>= 0; j--)
+    {
+        if (arr[j] > pivot)
+        {
+            i--;
+            swap(arr,i,j);
+        }
+    }
+    swap(arr,i-1,low);
+    return(i-1);
+}
+void quicksort(int* arr, int low, int high) //quicksort using first element as partition
+{
+    int q = partition(arr,low,high);
+    quicksort(arr,low,q-1);
+    quicksort(arr,q+1,high);
+}
+int partitionrand(int* arr, int low, int high) //partitions using random element as partition - using first partition as subroutine
+{
+    int pivot = arr[rand() % high];
+    swap(arr,pivot,low);
+    return partition(arr,low,high);
+}
+
+void quickrand(int* arr, int low, int high) //quicksort using a random element
+{
+    int q = partitionrand(arr,low,high);
+    quickrand(arr,low,q-1);
+    quickrand(arr,q+1,high);
+}
+
+//functions to use for testing values----------------------------
+int* generaterandarray(int size, int maxval) //generates an array of size size with the biggest possible value being maxval
+{
+    int* arr = new int[size];
+    for(int i = 0; i < size; i++)
+    {
+        arr[i] = rand() % maxval;
+    }
+    return arr;
+}
+int* generateascending(int size) //generates an ascending array of size size
+{
+    int* arr = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        arr[i] = i;
+    }
+    return arr;
+}
+int* generatedescenging(int size) //generates descending array of size size
+{
+    int* arr = new int[size];
+    for (int i = size; i >= 0; i--)
+    {
+        arr[i] = i;
+    }
+    return arr;
+}
+void print(int* arr, int n) //prints n elements of array
+{
+    for (int i  = 0; i < n; i++)
+    {
+        cout << arr[i] << ", ";
+    }
+    cout << endl;
+}
