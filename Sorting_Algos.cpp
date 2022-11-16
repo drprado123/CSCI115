@@ -46,6 +46,16 @@ void mergeSort(int arr[], int left, int right){
         merge(arr, left, mid, right);
     }
 }
+// bubble sort
+void bubbleSort(int arr[], int n){
+    for (int i = 0; i < n - 1; i++){
+        for (int j = 0; j < n - i - 1; j++){
+            if (arr[j] > arr[j + 1]){
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
+}
 // insertion sort
 void insertionSort(int arr[], int n){
     int key, j;
