@@ -225,7 +225,7 @@ void print(int* arr, int n) //prints n elements of array
     }
     cout << endl;
 }
--------------------------------
+
 int Getmax(int arr[],int s)
 {
     int max = arr[0];
