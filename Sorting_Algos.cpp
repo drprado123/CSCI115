@@ -225,5 +225,84 @@ void print(int* arr, int n) //prints n elements of array
     }
     cout << endl;
 }
+-------------------------------
+int Getmax(int arr[],int s)
+{
+    int max = arr[0];
+    for( int i = 1; i <s; i++)
+        {
+            if (arr[i] > max)
+            {
+                max = arr[i];
+            }
+        }
+    return max;
+}
+
+void countingSort(int arr[], int s, int div)
+{
+    int output[s];
+    int count[10] = {0};
+
+    for (int i = 0; i < s; i++)
+        {
+        count[(arr[i]/div)% 10]++;
+        }
+    for (int i = 1; i <10; i++)
+        {
+            count[i] += count[i-1];
+        }
+    for (int i = s -1; i >= 0; i--)
+        {
+            output[count[(arr[i]/div)%10]-1] = arr[i];
+            count[(arr[i]/div)%10]--;
+            }
+    for (int i =0; i < s; i ++)
+        {
+            arr[i]= output[i];
+        }
+}
+
+void radixSort(int arr[], int s)
+{
+    int m = Getmax(arr, s);
+    for(int div =1; m / div > 0; div *=10)
+        {
+           countingSort(arr, s,div); 
+        }
+}
+-----------------------------------
+	void countSort(int arr[], int n)
+{
+    int *sorted = new int[n];
+    int count = 0;
+    for (int i = 0; i < n; i++)
+        {
+            count =0;
+            
+    for (int j = 0; j < n; j++)
+        {
+            if (arr[j] < arr[i])
+            {
+                count += 1;
+            }
+        }
+            sorted[count]= arr[i];
+        }
+    for (int i =0; i < n;i++ )
+        {
+            arr[i] = sorted[i];
+        }
+}
+
+
+void print(int arr[], int n)
+{
+    for(int i =0; i < n; i++)
+        {
+            cout << arr[i]<< " ";
+        }
+    cout << endl;
+}
 
 #endif
