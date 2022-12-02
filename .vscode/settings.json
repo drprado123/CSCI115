@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "limits": "cpp"
+        "limits": "cpp",
+        "type_traits": "cpp",
+        "chrono": "cpp",
+        "ostream": "cpp"
     }
 }

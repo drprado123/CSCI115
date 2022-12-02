@@ -226,6 +226,26 @@ void print(int* arr, int n) //prints n elements of array
     cout << endl;
 }
 
+int* arrayget(int* arr, int n) //gets the first n values of an array
+{
+    int* temp = new int[n];
+    for (int i = 0; i <n; i++)
+    {
+        temp[i] = arr[i];
+    }
+    return temp;
+}
+
+int* arrayfill(int size, int number)
+{
+    int* temp = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        temp[i] = number;
+    }
+    return temp;
+}
+
 int Getmax(int arr[],int s)
 {
     int max = arr[0];
