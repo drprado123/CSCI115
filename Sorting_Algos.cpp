@@ -107,23 +107,25 @@ void swap (int* arr, int a, int b)//swaps two values within an array
 int partition(int* arr, int low, int high) //partitions using first element
 {
     int pivot = arr[low];
-    int i = high +1;
-    for (int j = high; j>= 0; j--)
+    int i = high;
+    for (int j = high; j> low; j--)
     {
         if (arr[j] > pivot)
         {
-            i--;
-            swap(arr,i,j);
+            swap(arr,i--,j);
         }
     }
-    swap(arr,i-1,low);
-    return(i-1);
+    swap(arr,i,low);
+    return(i);
 }
 void quicksort(int* arr, int low, int high) //quicksort using first element as partition
 {
-    int q = partition(arr,low,high);
-    quicksort(arr,low,q-1);
-    quicksort(arr,q+1,high);
+    if (low < high)
+    {
+        int q = partition(arr,low,high);
+        quicksort(arr,low,q-1);
+        quicksort(arr,q+1,high);
+    }
 }
 int partitionrand(int* arr, int low, int high) //partitions using random element as partition - using first partition as subroutine
 {
@@ -141,54 +143,32 @@ void quickrand(int* arr, int low, int high) //quicksort using a random element
 
 
 //functions for heapsort -------------------------------
-class minheap
+void heapify(int* arr, int size, int root)
 {
-    public:
-        minheap();
-        minheap(int*,int);
-        int* heapsort();
-        int* heapsort(int*);
-        int* buildheap(int*,int);
+    int largest = root;
+    int left = 2 * root + 1;
+    int right = 2 * root + 2;
 
-    private:
-        int* vals;
-        int size;
-        void heapify(int*, int);
-};
 
-minheap :: minheap(int* input, int n)
-{
-    vals = input;
-    size = n;
-    heapify(input, 0);
-}
-
-void minheap :: heapify(int* vals, int loc)
-{
-    if (loc > size) return;
-    int left,right;
-    int small;
-    if (loc == 0)
+    if (left < size && arr[left] > arr[largest]) largest = left;
+    if (right < size && arr[right] > arr[largest]) largest = right;
+    if (largest != root)
     {
-        left = 1;
-        right = 2;
-    }
-    else 
-    {
-        left = loc * 2 - 1;
-        right = loc * 2;
-    }
-    if (left < size && left < vals[loc]) small = left;
-    else small = loc;
-    if (right < size && right < small) small = right;
-    if (small != loc) swap(vals,small,loc); heapify(vals,small);
-}
+        swap(arr,root,largest);
 
-int* minheap :: buildheap(int* vals, int n)
+        heapify(arr,size,largest);
+    }
+
+}
+void heapsort(int* arr, int size)
 {
-    for (int i = n/2; i >= 0; i--) heapify(vals,i);
+    for (int  i = size/2-1; i >=0; i--) heapify(arr,size,i);
+    for (int i = size - 1; i >=0; i--) 
+    {
+        swap(arr,0,i);
+        heapify(arr,i,0);
+    }
 }
-
 //functions to use for testing values----------------------------
 int* generaterandarray(int size, int maxval) //generates an array of size size with the biggest possible value being maxval
 {
@@ -213,7 +193,7 @@ int* generatedescending(int size) //generates descending array of size size
     int* arr = new int[size];
     for (int i = size; i >= 0; i--)
     {
-        arr[i] = i;
+        arr[size-i] = i;
     }
     return arr;
 }
