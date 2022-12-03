@@ -7,7 +7,7 @@ using namespace std;
 using namespace std :: chrono;
 
 
-const int numof = 100000;
+const int numof = 5000;
 
 int* testfunc(void sort(int* arr, int size), int* testarray)
 {
@@ -110,11 +110,13 @@ void handler(int* arr)
   average_vals = testfunc(countingSort,arr);
   place_csv(average_vals);
   delete[] average_vals;
+  cout << "counting sort complete" << endl;
   
   //radix
   average_vals =testfunc(radixSort,arr);
   place_csv(average_vals);
   delete[] average_vals;
+  cout << "radix complete" <<endl;
   
 
 }
@@ -123,7 +125,10 @@ void handler(int* arr)
 int main()
 {
   handler(generaterandarray(numof,10000));
+  cout << "random array testing complete" <<endl;
   handler(generateascending(numof));
+  cout << "descening array testing complete" <<endl;
   handler(generatedescending(numof));
+  cout << "testing complete please see .csv file!" << endl;
   return  0;
 }
