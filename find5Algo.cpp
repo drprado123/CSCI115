@@ -26,4 +26,5 @@ bool find5hash (int* vals, int size)
         if (hashcheck(hashing,vals[i]) == true) return true;
         i++;
     }
+    return false;
 }
