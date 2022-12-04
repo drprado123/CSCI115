@@ -133,6 +133,11 @@ int main()
   handler(generatedescending(numof));
   cout << "testing complete please see .csv file!" << endl;
 
-
+  /*
+  //Basic test structure
+  int* array = generateascending(100); //generates array
+  int* averages = testfunc(quickrand,array); //does testing and returns averes
+  place_csv(averages); //place_ csv
+  */
   return  0;
 }
