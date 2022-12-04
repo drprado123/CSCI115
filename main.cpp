@@ -30,9 +30,7 @@ int* testfunc(void sort(int* arr, int size), int* testarray)
         }
         delete[] holder;
       }
-      cout << "amde it" << endl;
       return averages;
-
 }
 int* testfunc(void sort(int* arr, int left, int right), int* testarray)
 {
@@ -45,7 +43,7 @@ int* testfunc(void sort(int* arr, int left, int right), int* testarray)
       {
         cout << n << endl;
         holder = arrayget(testarray,n);
-        for (int i = 0;  i < 9; i++)
+        for (int i = 0;  i < 100; i++)
         {
           start = high_resolution_clock :: now();
           sort(holder, 0,n-1);
@@ -100,6 +98,10 @@ void handler(int* arr)
   delete[] average_vals;
   cout << "qs complete" << endl;
   
+  //quickrand 
+  average_vals = testfunc(quickrand,arr);
+  place_csv(average_vals);
+  delete[] average_vals;
   //heap
   average_vals = testfunc(heapsort,arr);
   place_csv(average_vals);
@@ -107,7 +109,7 @@ void handler(int* arr)
   cout << "heaport complete" << endl;
   
   //counting
-  average_vals = testfunc(countingSort,arr);
+  average_vals = testfunc(countSort,arr);
   place_csv(average_vals);
   delete[] average_vals;
   cout << "counting sort complete" << endl;
@@ -130,5 +132,7 @@ int main()
   cout << "descening array testing complete" <<endl;
   handler(generatedescending(numof));
   cout << "testing complete please see .csv file!" << endl;
+
+
   return  0;
 }

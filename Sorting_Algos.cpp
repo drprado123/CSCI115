@@ -129,16 +129,19 @@ void quicksort(int* arr, int low, int high) //quicksort using first element as p
 }
 int partitionrand(int* arr, int low, int high) //partitions using random element as partition - using first partition as subroutine
 {
-    int pivot = arr[rand() % high];
+    int pivot = low + rand() % (high - low);
     swap(arr,pivot,low);
     return partition(arr,low,high);
 }
 
 void quickrand(int* arr, int low, int high) //quicksort using a random element
 {
-    int q = partitionrand(arr,low,high);
-    quickrand(arr,low,q-1);
-    quickrand(arr,q+1,high);
+    if (low < high)
+    {
+        int q = partitionrand(arr,low,high);
+        quickrand(arr,low,q-1);
+        quickrand(arr,q+1,high);
+    }
 }
 
 
