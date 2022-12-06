@@ -14,23 +14,21 @@ bool hashcheck(int* hash, int val)
     else return false;
 
 }
-bool find5hash (int* vals, int size)
+bool find5hash (int* vals, int size, int findme)
 {
-    int* hashing  = new int(6);
-    for (int i = 0; i < 6; i++)
+    int* hashing  = new int(findme);
+    for (int i = 0; i < findme; i++)
     {
         hashing[i] = 0;
     }
     int i = 0;
     while (i < size)
     {
-        if (vals[i] % 5 <= 0 && vals[i] <= 5)
+        if (vals[i] <= findme)
         {
             hashing[vals[i]]++;
+            if (hashing[findme - vals[i]] >= 1) return true;
         }
-        if (hashing[0] >= 1 && hashing[5] >= 1) return true;
-        if (hashing[1] >= 1 && hashing[4] >=1) return true;
-        if (hashing[2] >=1 && hashing[3]>=1) return true;
         i++;
     }
     return false;
@@ -38,5 +36,9 @@ bool find5hash (int* vals, int size)
 
 int main()
 {
+    int* arr = new int[2];
+    arr[0] = 100;
+    arr[1] = 0;
+    cout << find5hash(arr,2,100);
     return 0;
 }
