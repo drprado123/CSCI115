@@ -2,7 +2,6 @@
 #include <fstream>
 #include <chrono>
 #include "Sorting_Algos.cpp" //gives acess to sorting functions
-#include "auxfunctions.cpp" //gives acess to auxilary/helper functions
 using namespace std;
 using namespace std :: chrono; //allows us to use commonplace chrono commands
 
