@@ -7,7 +7,9 @@ Link to Google Slides
 https://docs.google.com/presentation/d/1x0LrWqRDC9IbqJLpr862WMjG8SaDJEuvYwamZngfAqU/edit?usp=sharing
 
 
-Using this code is very simple. Simply running the main with a file named "data.csv" in the same directory will reproduce all of our results. 
+Using this code is very simple. Simply running the main with a file named "data.csv" in the same directory will reproduce all of our results.
+The file "main" runs the tests for the sorting algorithms and the file fin5Algo contains our part two algorithm. Data is the raw csv file and DataGraphs is the excel with 
+parsed and edited data + graphs. Sorting_Algos contains all of our sorting algorithms and helper functions this exists so that we may have cleaner and more consistent code.  
 
 For a functional breakdown though
 the handler function is the primary usage tool here as it is programmed to receive an array and then using that array run all necessary tests on each sorting algorithm
