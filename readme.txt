@@ -15,3 +15,7 @@ the internal functions of the hanlder functions can be used outside of it though
 to do so one would call testfunc and insert their soring algorithm as a parameter as well as the array they wish to use during the process
 then the values that returns are the average times for each array size --  in this way the handler simply facilitates the calling of testfunc over and over
 place_csv simply manages the fstream do the data.csv file. 
+
+It is important though that all files be loaded in the same directory as they rely on eachother for incluces/imports
+
+For usage of the find5 function, one simply inserts an array, its size and a value to be searched for and bool value will be returned. Important to note that this function does NOT work with negative numbers
