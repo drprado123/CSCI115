@@ -1,7 +1,9 @@
-#ifndef __minheap_
-#define __minheap_
+//file containing all sorting algorithms required
 #include <iostream>
+#include "auxfunctions.cpp"
 using namespace std;
+
+
 
 // merge sort
 void merge(int arr[], int left, int mid, int right){
@@ -172,75 +174,6 @@ void heapsort(int* arr, int size)
         heapify(arr,i,0);
     }
 }
-//functions to use for testing values----------------------------
-int* generaterandarray(int size, int maxval) //generates an array of size size with the biggest possible value being maxval
-{
-    int* arr = new int[size];
-    for(int i = 0; i < size; i++)
-    {
-        arr[i] = rand() % maxval;
-    }
-    return arr;
-}
-int* generateascending(int size) //generates an ascending array of size size
-{
-    int* arr = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-        arr[i] = i;
-    }
-    return arr;
-}
-int* generatedescending(int size) //generates descending array of size size
-{
-    int* arr = new int[size];
-    for (int i = size; i >= 0; i--)
-    {
-        arr[size-i] = i;
-    }
-    return arr;
-}
-void print(int* arr, int n) //prints n elements of array
-{
-    for (int i  = 0; i < n; i++)
-    {
-        cout << arr[i] << ", ";
-    }
-    cout << endl;
-}
-
-int* arrayget(int* arr, int n) //gets the first n values of an array
-{
-    int* temp = new int[n];
-    for (int i = 0; i <n; i++)
-    {
-        temp[i] = arr[i];
-    }
-    return temp;
-}
-
-int* arrayfill(int size, int number)
-{
-    int* temp = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-        temp[i] = number;
-    }
-    return temp;
-}
-
-int Getmax(int arr[],int s)
-{
-    int max = arr[0];
-    for( int i = 1; i <s; i++)
-        {
-            if (arr[i] > max)
-            {
-                max = arr[i];
-            }
-        }
-    return max;
-}
 
 void countingSort(int arr[], int s, int div)
 {
@@ -298,6 +231,3 @@ void radixSort(int arr[], int s)
         }
 }
 
-
-
-#endif
